@@ -1,0 +1,92 @@
+<form [formGroup]="form" (ngSubmit)="add_task()">
+    <div class="form-group">
+        <label for="title">Title:</label>
+        <input #titleRef="ngModel" type="text" class="form-control" placeholder="Enter the Title" formControlname="title" id="title" required ngModel>
+    </div>
+
+    <div class="alert alert-danger" *ngIf="title?.invalid && title?.touched">
+        <div *ngIf="titleRef.errors">
+            <div *ngIf="titleRef.errors['required']">Title is required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <input #descriptionRef="ngModel" type="text" class="form-control" placeholder="Enter the Description" formControlname="description" id="description" required ngModel>
+    </div>
+
+    <div class="alert alert-danger" *ngIf="descriptionRef.invalid && descriptionRef.touched">
+        <div *ngIf="descriptionRef.errors">
+            <div *ngIf="descriptionRef.errors['required']">Description is required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="category">Category:</label>
+        <input #categoryRef="ngModel" type="text" class="form-control" placeholder="Enter the Category" formControlname="category" id="category" required ngModel>
+    </div>
+
+    <div class="alert alert-danger" *ngIf="categoryRef.invalid && categoryRef.touched">
+        <div *ngIf="categoryRef.errors">
+            <div *ngIf="categoryRef.errors['required']">Category is required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="date">Date:</label>
+        <input #dateRef="ngModel" type="date" class="form-control" placeholder="Enter the date" formControlname="date" id="date" required ngModel>
+    </div>
+
+    <div class="alert alert-danger" *ngIf="dateRef.invalid && dateRef.touched">
+        <div *ngIf="dateRef.errors">
+            <div *ngIf="dateRef.errors['required']">Date is required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="time">Time:</label>
+        <input #timeRef="ngModel" type="time" class="form-control" placeholder="Enter the Time" formControlname="time" id="time" required ngModel>
+    </div>
+
+    <div class="alert alert-danger" *ngIf="timeRef.invalid && timeRef.touched">
+        <div *ngIf="timeRef.errors">
+            <div *ngIf="timeRef.errors['required']"> Time is required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="priorityLevel">Priority Level:</label>
+        <select #priorityLevelRef="ngModel" name="priorityLevel" class="form-control" id="priorityLevel" ngModel required>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+            <option value="Critical">Critical</option>
+        </select>
+    </div>
+    <div *ngIf="priorityLevelRef.invalid && priorityLevelRef.touched">
+        <div *ngIf="priorityLevelRef.errors" class="text-danger">
+            <div *ngIf="priorityLevelRef.errors['required']">
+                Priority Level is Required
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="progressLevel">Progress Level:</label>
+        <select #progressLevelRef="ngModel" name="progressLevel" class="form-control" id="progressLevel" ngModel required>
+            <option value="Not Started">Not Started</option>
+            <option value="Started">Started</option>
+            <option value="Completed">Completed</option>
+        </select>
+    </div>
+    <div *ngIf="progressLevelRef.invalid && progressLevelRef.touched">
+        <div *ngIf="progressLevelRef.errors" class="text-danger">
+            <div *ngIf="progressLevelRef.errors['required']">
+                Progress Level is Required
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+</form>
+
